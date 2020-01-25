@@ -28,7 +28,7 @@ var BookSchema = new Schema({
   saved: {
     type: Boolean,
     default: false,
-    required: false
+    required: true
   },
   
 //   note: {

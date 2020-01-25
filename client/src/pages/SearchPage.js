@@ -3,7 +3,9 @@ import Nav from "../components/nav";
 import Search from "../components/search";
 import ResultBox from "../components/ResultsBox";
 import NoBookBox from "../components/noBooks";
-import AxiosAPI from "../utils/AxiosAPI"
+import AxiosAPI from "../utils/AxiosAPI";
+import axios from "axios";
+
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './Page.css';
@@ -27,6 +29,7 @@ class SearchPage extends React.Component {
         responseObj.description = response.data.items[i].volumeInfo.description;
         responseObj.image = response.data.items[i].volumeInfo.imageLinks.thumbnail;
         responseObj.link = response.data.items[i].volumeInfo.infoLink;
+        responseObj.id = i;
         cleanResultArray.push(responseObj);
       }
       this.setState({results: cleanResultArray}, () => console.log(this.state.results));
@@ -50,6 +53,26 @@ class SearchPage extends React.Component {
     event.preventDefault();
     this.search(this.state.searchTerm);
   };
+
+  // made id a number that represents the index in the result array in state.  passed id using props
+  save = (id) => {
+    let objToDB = {
+        title: this.state.results[id].title,
+        authors: this.state.results[id].authors,
+        description: this.state.results[id].description,
+        image: this.state.results[id].image,
+        link:  this.state.results[id].link,
+        saved: true
+    }
+    console.log(objToDB);
+    axios.post("/api/books", objToDB)
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
@@ -83,7 +106,9 @@ class SearchPage extends React.Component {
                 authors={each.authors}
                 description={each.description}
                 image={each.image}
-                link={each.link}>
+                link={each.link}
+                save={this.save}
+                id={each.id}>
                 </ResultBox>
                 )
                 )
