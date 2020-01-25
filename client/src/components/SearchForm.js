@@ -12,7 +12,7 @@ function SearchForm(props) {
         <button className ="btn waves-effect waves-light" type="submit" name="action"
         onClick={props.handleFormSubmit}
         >Submit
-        <i class="material-icons right">send</i>
+        <i className="material-icons right">send</i>
         </button>
       </div>
     </form>

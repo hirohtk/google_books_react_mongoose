@@ -15,6 +15,16 @@ if (process.env.NODE_ENV === "production") {
 
 // app.use(routes);
 
+// ROUTES (for now)
+
+app.get("/api/books", function (req, res) {
+
+});
+
+app.post("/api/books", function (req, res) {
+
+});
+
 // Connect to the Mongo DB
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist";

@@ -8,7 +8,7 @@ function Search(props) {
         <div className="searchBox col s12">
             <div className="row">
                 <div className="search col s12">
-                    <h4>Book Search</h4>
+                    <h3>Book Search</h3>
                     <h5>Enter a book:</h5>
                     <SearchForm
                     handleInputChange={props.handleInputChange}
@@ -19,7 +19,6 @@ function Search(props) {
             </div>
         </div>
     )
-
 }
 
 
