@@ -35,7 +35,6 @@ class App extends React.Component {
     })
     
   }
-
   // the onChange JS handler that's in the form triggers this method below, which changes state every time a key is pressed
   handleInputChange = event => {
     const name = event.target.name;

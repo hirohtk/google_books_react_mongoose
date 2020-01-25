@@ -23,3 +23,7 @@ right: 0px;
 #row1 {
     position: relative;
 }
+
+.description {
+    margin-right: 3rem;
+}
