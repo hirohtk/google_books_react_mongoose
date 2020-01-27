@@ -66,7 +66,7 @@ class SearchPage extends React.Component {
     }
     console.log(objToDB);
     axios.post("/api/books", objToDB)
-    .then(function (response) {
+    .then( (response) => {
         console.log(response);
     })
     .catch(function (error) {

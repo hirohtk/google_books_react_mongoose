@@ -17,20 +17,28 @@ class SavedPage extends React.Component {
     }
 
     showSaved = () => {
-    axios.get("/api/books")
-    .then( (response) => {
-        // response contains JSON that comes from quering the database for all saved books
-        // when querying Mongodb, the repsonse.data contains all fields in the document, including the id which I need for the delete
-        this.setState({results: response.data});
-        console.log(this.state.results);
-    })
-    .catch(function (error) {
-        console.log(error);
-      });
+        axios.get("/api/books")
+            .then((response) => {
+                // response contains JSON that comes from quering the database for all saved books
+                // when querying Mongodb, the repsonse.data contains all fields in the document, including the id which I need for the delete
+                this.setState({ results: response.data });
+                console.log(this.state.results);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
-    delete = (id) => {
+    delete = (id, title) => {
         console.log(`deleting book with id of ${id}`);
+        console.log(`This book which I'm deleting is ${title}`);
+        // DELETE takes params- givig it the specific param in the book that is to be delete
+        axios.delete(`/api/books/${id}`).then((response) => {
+            console.log(response);
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -51,7 +59,7 @@ class SavedPage extends React.Component {
                                 {
                                     (this.state.results.length === 0) ?
                                         <NoBookBox
-                                        type={"save"}>
+                                            type={"save"}>
                                         </NoBookBox>
                                         :
                                         this.state.results.map((each) => (
@@ -61,7 +69,7 @@ class SavedPage extends React.Component {
                                                 description={each.description}
                                                 image={each.image}
                                                 link={each.link}
-                                                id={each._id}
+                                                deleteId={each._id}
                                                 type={"delete"}
                                                 delete={this.delete}>
                                             </ResultBox>

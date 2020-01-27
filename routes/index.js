@@ -13,7 +13,15 @@ router.get("/api/books", function (req, res) {
 router.post("/api/books", function (req, res) {
     console.log(`Added Book ${req.body.title} to database.`);
     db.Book.create(req.body)
-    .then(res.json(req.body.title))
+    .then(res.json())
+    .catch(err => res.status(422).json(err));
+})
+
+router.delete("/api/books/:id", function (req, res) {
+    let id = req.params.id;
+    console.log(`Deleting book ${id} from database.`);
+    db.Book.findByIdAndDelete(id)
+    .then(res.json())
     .catch(err => res.status(422).json(err));
 })
 

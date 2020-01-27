@@ -11,7 +11,7 @@ function ResultBox(props) {
         // This way, clicking this button will do different things depending on what component it's in.  
         // If there is a props.delete, then do props.delete, otherwise, do save
             {
-                (props.delete) ? () => props.delete(props.id) : () => props.save(props.id)
+                (props.delete) ? () => props.delete(props.deleteId, props.title) : () => props.save(props.id)
             }
             ><i class="material-icons right">{props.type}</i>{props.type}</a>
             <a className="waves-effect waves-light btn viewButton" id="" href={props.link} target="_blank"><i class="material-icons right">visibility</i>View</a></p>
