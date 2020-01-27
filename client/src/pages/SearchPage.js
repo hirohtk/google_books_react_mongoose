@@ -39,21 +39,6 @@ class SearchPage extends React.Component {
           responseObj.image = response.data.items[i].volumeInfo.imageLinks.thumbnail;
         }
         responseObj.link = response.data.items[i].volumeInfo.infoLink;
-
-        // function HandleNoData() {
-        //   let thingsINeed = [response.data.items[i].volumeInfo.title, response.data.items[i].volumeInfo.authors,
-        //   response.data.items[i].volumeInfo.description, response.data.items[i].volumeInfo.imageLinks.thumbnail,
-        //   response.data.items[i].volumeInfo.infoLink]
-
-        //   if (thingsINeed.includes(undefined)) {
-        //     let position = thingsINeed.indexOf(undefined);
-        //   }
-
-        //   responseObj.description = response.data.items[i].volumeInfo.description;
-        //   responseObj.image = response.data.items[i].volumeInfo.imageLinks.thumbnail;
-        //   responseObj.link = response.data.items[i].volumeInfo.infoLink;
-        // }
-
         responseObj.id = i;
         cleanResultArray.push(responseObj);
       }

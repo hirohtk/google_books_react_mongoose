@@ -19,7 +19,7 @@ function ResultBox(props) {
             </div>
             <div className="row">
                 <div className="col s2">
-                <img src={props.image} className="floatLeft"></img>
+                <img src={(props.image.contains("http")) ? props.img : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"} className="floatLeft"></img>
                 </div>
             <div className="col s10">
             <p className="floatLeft description">{props.description}</p>
