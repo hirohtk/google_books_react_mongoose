@@ -3,7 +3,7 @@ import Nav from "../components/nav";
 import Search from "../components/search";
 import ResultBox from "../components/ResultsBox";
 import NoBookBox from "../components/noBooks";
-import AxiosAPI from "../utils/AxiosAPI";
+import GoogleBooksAPI from "../utils/GoogleBooksAPI";
 import axios from "axios";
 
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -19,7 +19,7 @@ class SearchPage extends React.Component {
 
   search = (query) => {
     console.log(`Searching for ${query}...`)
-    AxiosAPI.search(query).then((response) => {
+    GoogleBooksAPI.search(query).then((response) => {
       // Setting up a more manageable array in state:
       let cleanResultArray = [];
       for (let i = 0; i < 7; i++) {
@@ -81,7 +81,7 @@ class SearchPage extends React.Component {
         <div className="container">
           <div className="row">
             <div className="staticJumbotron col s12">
-              <h3>(React) Google Books Search</h3>
+              <h3>React Google Books Search</h3>
               <h4>Search for and Save Books of interest!</h4>
             </div>
             <Search
@@ -97,7 +97,8 @@ class SearchPage extends React.Component {
               <div>
                 {
                   (this.state.results.length === 0) ? 
-                  <NoBookBox>
+                  <NoBookBox
+                  type={"Search for"}>>
                   </NoBookBox> 
                   :
                 this.state.results.map( (each) => (
@@ -108,7 +109,8 @@ class SearchPage extends React.Component {
                 image={each.image}
                 link={each.link}
                 save={this.save}
-                id={each.id}>
+                id={each.id}
+                type={"save"}>
                 </ResultBox>
                 )
                 )

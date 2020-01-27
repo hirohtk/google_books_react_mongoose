@@ -6,7 +6,14 @@ function ResultBox(props) {
         <div className="resultBox">
             <div className="row" id="row1">
             <p><h4>{props.title}</h4>
-            <a className="waves-effect waves-light btn saveButton" id="" onClick={() => props.save(props.id)}><i class="material-icons right">save</i>Save</a>
+            <a className="waves-effect waves-light btn saveButton" id="" onClick=
+        // Since I'm reusing this component, below I'm asking if there is a props.delete (the search component doesn't).
+        // This way, clicking this button will do different things depending on what component it's in.  
+        // If there is a props.delete, then do props.delete, otherwise, do save
+            {
+                (props.delete) ? () => props.delete(props.id) : () => props.save(props.id)
+            }
+            ><i class="material-icons right">{props.type}</i>{props.type}</a>
             <a className="waves-effect waves-light btn viewButton" id="" href={props.link} target="_blank"><i class="material-icons right">visibility</i>View</a></p>
             <p>Author(s): {props.authors}</p>
             </div>

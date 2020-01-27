@@ -3,7 +3,7 @@ import React from "react";
 function NoBookBox(props) {
     return (
         <div className="resultBox">
-            <h4>No Books Here... Please Search for a Book</h4>
+            <h4>No Books Here... Please {props.type} a book.</h4>
         </div>
     );
 }

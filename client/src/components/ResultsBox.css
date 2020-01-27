@@ -1,11 +1,11 @@
 .saveButton {
-position: absolute;
-right: 0px;
+position: relative;
+float:right;
 }
 
 .viewButton {
-    position: absolute;
-    right: 100px;
+    position: relative;
+    float:right;
 }
 
 .resultBox {
