@@ -5,6 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,3 +28,14 @@ app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   
 });
+
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+//   socket.on('disconnect', function(){
+//     console.log('user disconnected');
+//   });
+// });
+
+// http.listen(3002, function(){
+//   console.log('listening on *:3002');
+// });

@@ -19,31 +19,39 @@ class SearchPage extends React.Component {
 
   search = (query) => {
     console.log(`Searching for ${query}...`)
+
     GoogleBooksAPI.search(query).then((response) => {
       // Setting up a more manageable array in state:
       let cleanResultArray = [];
-      for (let i = 0; i < 10; i++) {
-        let responseObj = {};
-        responseObj.title = response.data.items[i].volumeInfo.title;
-        if (!response.data.items[i].volumeInfo.authors) {
-          responseObj.authors = "No Authors"
-        }
-        else {
-          responseObj.authors = response.data.items[i].volumeInfo.authors.join(", ");
-        }
-        responseObj.description = response.data.items[i].volumeInfo.description;
-        if (!response.data.items[i].volumeInfo.imageLinks) {
-          responseObj.image = "No Thumbnail available"
-        }
-        else {
-          responseObj.image = response.data.items[i].volumeInfo.imageLinks.thumbnail;
-        }
-        responseObj.link = response.data.items[i].volumeInfo.infoLink;
-        responseObj.id = i;
-        cleanResultArray.push(responseObj);
+      console.log(`response  # is ${(response.data.totalItems)}`);
+
+      if (response.data.totalItems === 0) {
+
       }
-      this.setState({ results: cleanResultArray }, () => console.log(this.state.results));
-      // ... why doesn't this work?  I've done the above instead, but would like to use a callback instead, ideally.
+      else {
+        for (let i = 0; i < 10; i++) {
+          let responseObj = {};
+          responseObj.title = response.data.items[i].volumeInfo.title;
+          if (!response.data.items[i].volumeInfo.authors) {
+            responseObj.authors = "No Authors"
+          }
+          else {
+            responseObj.authors = response.data.items[i].volumeInfo.authors.join(", ");
+          }
+          responseObj.description = response.data.items[i].volumeInfo.description;
+          if (!response.data.items[i].volumeInfo.imageLinks) {
+            responseObj.image = "No Thumbnail available"
+          }
+          else {
+            responseObj.image = response.data.items[i].volumeInfo.imageLinks.thumbnail;
+          }
+          responseObj.link = response.data.items[i].volumeInfo.infoLink;
+          responseObj.id = i;
+          cleanResultArray.push(responseObj);
+        }
+        this.setState({ results: cleanResultArray }, () => console.log(this.state.results));
+      }
+      // ... why doesn't the below work?  I've done the above instead, but would like to use a promise instead, ideally.
       // this.setState({results: cleanResultArray}).then( (what) => console.log(this.state.results))
     })
 

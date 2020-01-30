@@ -1,11 +1,13 @@
 import React from 'react';
+import Nav from './nav'
 
 function PageNotFound() {
 
     return (
         <div className="col s12">
+            <Nav/>
             <div className="row">
-                <h1>404: Nothing Here!</h1>
+                <h1 style={{textAlign: "center"}}>404: Nothing Here!</h1>
             </div>
         </div>
     )
