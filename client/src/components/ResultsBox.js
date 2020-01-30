@@ -14,12 +14,12 @@ function ResultBox(props) {
                 (props.delete) ? () => props.delete(props.deleteId, props.title) : () => props.save(props.id)
             }
             ><i class="material-icons right">{props.type}</i>{props.type}</a>
-            <a className="waves-effect waves-light btn viewButton" id="" href={props.link} target="_blank"><i class="material-icons right">visibility</i>View</a></p>
+            <a className="waves-effect waves-light btn viewButton" id="" href={props.link} target="_blank" rel="noopener noreferrer"><i class="material-icons right">visibility</i>View</a></p>
             <p>Author(s): {(props.authors.includes("No")) ? <i>No Author Data</i> : props.authors}</p>
             </div>
             <div className="row">
                 <div className="col s2">
-                <img src={(props.image.includes("http")) ? props.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/128px-No_image_available.svg.png"} className="floatLeft"></img>
+                <img src={(props.image.includes("http")) ? props.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/128px-No_image_available.svg.png"} alt ="" className="floatLeft"></img>
                 </div>
             <div className="col s10">
             <p className="floatLeft description">{props.description}</p>
