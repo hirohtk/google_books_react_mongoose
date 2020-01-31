@@ -31,7 +31,7 @@ router.delete("/api/books/:id", function (req, res) {
 // });
 
 // Making this route for Heroku as opposed to the above - should equivalent to the above
-router.get("/", function(req, res) {
+router.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "../client/public/index.html"));
   });
 
