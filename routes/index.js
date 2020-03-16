@@ -2,6 +2,8 @@ const path = require("path");
 const router = require("express").Router();
 const db = require("../models/index");
 
+
+
 router.get("/api/books", function (req, res) {
     console.log("api GET request received");
     db.Book.find({saved: true}).then( (response) => {
@@ -21,7 +23,7 @@ router.delete("/api/books/:id", function (req, res) {
     let id = req.params.id;
     console.log(`Deleting book ${id} from database.`);
     db.Book.findByIdAndDelete(id)
-    .then(res.json())
+    .then(res.json(response))
     .catch(err => res.status(422).json(err));
 })
 
