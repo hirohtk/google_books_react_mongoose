@@ -23,7 +23,11 @@ router.delete("/api/books/:id", function (req, res) {
     let id = req.params.id;
     console.log(`Deleting book ${id} from database.`);
     db.Book.findByIdAndDelete(id)
-    .then(res.json(response))
+    .then((response) => {
+        console.log(`my response here is ${response}`)
+        res.json(response)
+    }
+        )
     .catch(err => res.status(422).json(err));
 })
 

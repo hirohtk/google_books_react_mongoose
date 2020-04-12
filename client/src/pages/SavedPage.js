@@ -34,7 +34,7 @@ class SavedPage extends React.Component {
         console.log(`This book which I'm deleting is ${title}`);
         // DELETE takes params- givig it the specific param in the book that is to be delete
         axios.delete(`/api/books/${id}`).then((response) => {
-            console.log(response);
+            console.log(`my response from deleting book is ${response}`);
             console.log((this.state.results))
             // for the array in results, return an array that is just each object's id key and value
             // then find the index where the value equals this id being saved
